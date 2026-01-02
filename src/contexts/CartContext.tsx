@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext } from 'react';
 import type { ReactNode } from 'react';
 import { useCart } from '../hooks/useCart';
 
