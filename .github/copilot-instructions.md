@@ -5,7 +5,7 @@ Howdy, partner! 🤠 Welcome to the Copilot Working Group workshop repository. T
 ## Project Overview
 
 This is a Vite + React + TypeScript project that uses:
-- **React 19** with React Router and React Query for state management
+- **React 19** with TanStack Router and React Query for state management
 - **TypeScript** for type safety
 - **ESLint** for code linting
 - **Vitest** for testing
