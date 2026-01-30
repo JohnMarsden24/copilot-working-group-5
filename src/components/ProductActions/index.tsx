@@ -1,5 +1,5 @@
 import { useProduct } from '../../hooks/useProduct';
-import { useCartContext } from '../../contexts/CartContext';
+import { useCartContext } from '../../contexts/useCartContext';
 import { Button } from '../ui/Button';
 import styles from './ProductActions.module.css';
 
@@ -9,7 +9,7 @@ export const ProductActions = () => {
 
   return (
     <div className={styles.actions}>
-      <Button fullWidth onClick={() => product && addToCart(product)}>
+      <Button fullWidth onClick={() => addToCart(product)}>
         Add to Cart
       </Button>
     </div>
