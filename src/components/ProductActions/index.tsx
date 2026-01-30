@@ -6,12 +6,19 @@ import styles from './ProductActions.module.css';
 export const ProductActions = () => {
   const { data: product } = useProduct();
   const { addToCart } = useCartContext();
+  const isOutOfStock = product?.stock === 0;
 
   return (
     <div className={styles.actions}>
-      <Button fullWidth onClick={() => product && addToCart(product)}>
-        Add to Cart
-      </Button>
+      {isOutOfStock ? (
+        <Button fullWidth disabled>
+          Out of Stock
+        </Button>
+      ) : (
+        <Button fullWidth onClick={() => product && addToCart(product)}>
+          Add to Cart
+        </Button>
+      )}
     </div>
   );
 };
