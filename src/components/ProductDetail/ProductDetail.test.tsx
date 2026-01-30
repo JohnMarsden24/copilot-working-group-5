@@ -2,6 +2,20 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { ProductDetail } from './index';
 
+/**
+ * ProductDetail Component Tests
+ * 
+ * Testing Approach:
+ * These tests verify that ProductDetail correctly composes its child components
+ * (ProductNavigation, ProductImage, ProductInfo, ProductMeta, ProductActions)
+ * in the proper structure. Child components are mocked to isolate ProductDetail's
+ * composition behavior.
+ * 
+ * Note: The mocked components use representative data to simulate realistic output.
+ * These tests validate the component's structure and composition, not data flow,
+ * since ProductDetail is a pure composition component with no props.
+ */
+
 // Mock child components to focus on ProductDetail's composition behavior
 // These mocks simulate what the real components would render
 vi.mock('../ProductNavigation', () => ({
@@ -18,7 +32,6 @@ vi.mock('../ProductImage', () => ({
       data-testid="product-image" 
       alt="Smartphone X" 
       src="https://example.com/phone.jpg"
-      role="img"
     />
   ),
 }));
