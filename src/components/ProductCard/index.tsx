@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router';
 import type { Product } from '../../types/product';
 import { Card } from '../ui/Card';
 import { Button } from '../ui/Button';
-import { useCartContext } from '../../contexts/CartContext';
+import { useCartContext } from '../../contexts/useCartContext';
 import styles from './ProductCard.module.css';
 
 interface ProductCardProps {
@@ -11,7 +11,8 @@ interface ProductCardProps {
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart } = useCartContext();
-  const isLowStock = product.stock < 10;
+  const isOutOfStock = product.stock === 0;
+  const isLowStock = product.stock < 10 && product.stock > 0;
 
   return (
     <Card>
@@ -47,15 +48,33 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           <Card.Price>${product.price.toFixed(2)}</Card.Price>
         </div>
 
-        <div className={isLowStock ? styles.lowStock : styles.stock}>
-          {isLowStock ? `Only ${product.stock} left!` : 'In Stock'}
+        <div
+          className={
+            isOutOfStock
+              ? styles.outOfStock
+              : isLowStock
+                ? styles.lowStock
+                : styles.stock
+          }
+        >
+          {isOutOfStock
+            ? 'Out of Stock'
+            : isLowStock
+              ? `Only ${product.stock} left!`
+              : 'In Stock'}
         </div>
       </div>
 
       <Card.Actions>
-        <Button fullWidth onClick={() => addToCart(product)}>
-          Add to Cart
-        </Button>
+        {isOutOfStock ? (
+          <Button fullWidth disabled>
+            Out of Stock
+          </Button>
+        ) : (
+          <Button fullWidth onClick={() => addToCart(product)}>
+            Add to Cart
+          </Button>
+        )}
       </Card.Actions>
     </Card>
   );

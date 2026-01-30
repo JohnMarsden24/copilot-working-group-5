@@ -78,3 +78,9 @@
   color: #ed8936;
   font-weight: 600;
 }
+
+.outOfStock {
+  font-size: 0.8rem;
+  color: #e53e3e;
+  font-weight: 600;
+}
